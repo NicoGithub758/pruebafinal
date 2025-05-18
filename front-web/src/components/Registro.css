@@ -1,0 +1,79 @@
+/* Contenedor principal del registro */
+.registro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hace que ocupe toda la altura de la pantalla */
+    background-color: #f4f4f4; /* Color de fondo */
+}
+
+/* Contenedor del formulario de registro */
+.registro-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Ajusta el ancho del formulario */
+    text-align: center; /* Centra los elementos dentro del formulario */
+}
+
+/* Estilo de los grupos de formulario */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
+    align-items: flex-start;
+}
+
+/* Etiquetas de los campos */
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Estilo de los inputs */
+input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Estilo del botón */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ddd;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Enlace de login */
+p {
+    font-size: 14px;
+}
+
+/* Asegurar que los inputs sean de altura adecuada */
+input[type="number"] {
+    -moz-appearance: textfield;  /* Quitar flechas de números en navegadores */
+}
+
+input[type="date"] {
+    font-family: sans-serif; /* Font de la fecha */
+}
