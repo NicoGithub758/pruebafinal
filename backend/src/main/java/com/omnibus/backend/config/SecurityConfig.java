@@ -19,26 +19,28 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(Customizer.withDefaults()) // 👈 NECESARIO para aplicar tu configuración de CORS
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/actuator/health").permitAll() // <--- AÑADIDO AQUÍ
                         .anyRequest().authenticated()
                 );
 
         return http.build();
     }
 
-
+    // ... tu corsConfigurationSource() sigue igual ...
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        // Asegúrate de que tu frontend también pueda hacer peticiones si lo necesita,
+        // aunque para el health check de Railway, el origen no importa tanto.
         configuration.setAllowedOrigins(List.of("https://pruebaa-xa44-git-main-santi53197442s-projects.vercel.app"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/**", configuration); // Aplica a todas las rutas
         return source;
     }
 }
