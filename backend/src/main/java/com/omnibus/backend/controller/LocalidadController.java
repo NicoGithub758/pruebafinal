@@ -19,6 +19,9 @@ public class LocalidadController {
     @Autowired
     public LocalidadController(LocalidadService localidadService) {
         this.localidadService = localidadService;
+
+
+
     }
 
     @GetMapping
@@ -33,6 +36,9 @@ public class LocalidadController {
         return localidad
                 .map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+
+                
     }
 
     @GetMapping("/nombre/{nombre}")
