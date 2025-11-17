@@ -53,17 +53,14 @@ public class JwtFilter extends OncePerRequestFilter {
             String rol = claims.get("rol", String.class);
             String subject = claims.getSubject();
 
-            // Validación crucial: el tenant en el token debe coincidir con el de la URL
             if (!tenantIdFromUrl.equals(tenantIdFromToken)) {
                 throw new JwtException("Token no válido para el tenant: " + tenantIdFromUrl);
             }
             
-            // Verificamos que sea una llamada del sistema HCEN
             if (!"SYSTEM".equals(rol) || !"hcen_system_service".equals(subject)) {
                  throw new JwtException("El token no pertenece al servicio de sistema de HCEN.");
             }
 
-            // Si todo es válido, autenticamos la solicitud para que Spring Security la deje pasar
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     subject, null, List.of(new SimpleGrantedAuthority("ROLE_" + rol)));
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -80,7 +77,6 @@ public class JwtFilter extends OncePerRequestFilter {
     
     private String extractTenantIdFromRequest(HttpServletRequest request) {
         String[] parts = request.getRequestURI().split("/");
-        // La URL será /<tenantId>/api/documentos/... -> parts[1] es el tenantId
         return (parts.length > 1) ? parts[1] : null;
     }
 }

@@ -5,13 +5,6 @@ import org.springframework.stereotype.Component;
 import lombok.RequiredArgsConstructor;
 import uy.com.provider.hcen_document_provider_api.security.JwtTokenProvider;
 
-/**
- * CLASE DE UTILIDAD TEMPORAL PARA DESARROLLO.
- * Genera un token JWT de prueba válido y lo imprime en la consola al iniciar la aplicación.
- * Ideal para usar con Postman.
- * 
- * ¡Deberías eliminar o comentar esta clase antes de ir a producción!
- */
 @Component
 @RequiredArgsConstructor
 public class TestTokenGenerator implements CommandLineRunner {
@@ -22,7 +15,7 @@ public class TestTokenGenerator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // Datos exactos para simular una llamada del sistema HCEN a la 'clinica_a'
         String subject = "hcen_system_service";
-        String tenantId = "clinica_c";
+        String tenantId = "prestador_externo";
         String role = "SYSTEM";
         
         // Generamos el token

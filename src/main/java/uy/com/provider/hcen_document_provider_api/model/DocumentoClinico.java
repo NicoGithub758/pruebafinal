@@ -7,7 +7,7 @@ import org.hibernate.type.SqlTypes;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "documento_clinico", schema = "clinica_c")
+@Table(name = "documento_clinico", schema = "prestador_externo")
 @Data
 public class DocumentoClinico {
     @Id

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "profesional", schema = "clinica_c")
+@Table(name = "profesional", schema = "prestador_externo")
 @Data
 public class Profesional {
     @Id

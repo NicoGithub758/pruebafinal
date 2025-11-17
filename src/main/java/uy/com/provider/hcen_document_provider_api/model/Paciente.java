@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "paciente", schema = "clinica_c")
+@Table(name = "paciente", schema = "prestador_externo")
 @Data
 public class Paciente {
     @Id
